@@ -1,0 +1,58 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>Page</title> 
+        <meta charset="UTF-8"/> 
+    </head> 
+    <body> 
+        <script> 
+            function computerPlay(){
+                let throws = ['rock', 'paper', 'scissors']
+                let x = Math.floor(Math.random() * 3) + 1
+                x -= 1
+                return throws[x]
+            }
+            function playRound(playerSelection, computerSelection){
+
+                playerSelection = playerSelection.toLowerCase()
+                computerSelection = computerSelection.toLowerCase()
+                let result
+            
+                if (playerSelection == computerSelection){
+                    result = 'tie'
+                }
+                else if (computerSelection == 'rock'){
+                    if (playerSelection == 'paper'){
+                        result = 'player'
+                    }
+                    else {
+                        result = 'computer'
+                    }
+                }
+                else if (computerSelection == 'paper'){
+                    if (playerSelection == 'scissors'){
+                        result = 'player'
+                    }
+                    else {
+                        result = 'computer'
+                    }
+                }
+                else if (computerSelection == 'scissors'){
+                    if (playerSelection == 'rock'){
+                        result = 'player'
+                    }
+                    else {
+                        result = 'computer'
+                    }
+                }
+
+                return result.toLowerCase()
+            }
+
+            const playerSelection = 'rock'
+            const computerSelection = computerPlay()
+            console.log(playRound(playerSelection, computerSelection))
+            
+        </script>        
+    </body>
+</html>
