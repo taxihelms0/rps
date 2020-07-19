@@ -16,42 +16,73 @@
 
                 playerSelection = playerSelection.toLowerCase()
                 computerSelection = computerSelection.toLowerCase()
-                let result
+                let result;
+                let action;
             
                 if (playerSelection == computerSelection){
                     result = 'tie'
+                    return result.toLowerCase();
                 }
                 else if (computerSelection == 'rock'){
                     if (playerSelection == 'paper'){
-                        result = 'player'
+                        result = 'player';
+                        action = ' covers ';
                     }
                     else {
-                        result = 'computer'
+                        result = 'computer';
+                        action = ' smashes ';
                     }
                 }
                 else if (computerSelection == 'paper'){
                     if (playerSelection == 'scissors'){
-                        result = 'player'
+                        result = 'player';
+                        action = ' cut ';
                     }
                     else {
-                        result = 'computer'
+                        result = 'computer';
+                        action = ' covers '
                     }
                 }
                 else if (computerSelection == 'scissors'){
                     if (playerSelection == 'rock'){
-                        result = 'player'
+                        result = 'player';
+                        action = ' smashes ';
                     }
                     else {
-                        result = 'computer'
+                        result = 'computer';
+                        action = ' cut ';
                     }
                 }
+                // add text to the end of result
+                
+                if (result == 'player'){
+                    result += ' wins. ' + playerSelection + action + computerSelection;
+                } else {
+                    result += ' wins. ' + computerSelection + action + playerSelection;
+                }
+                
 
-                return result.toLowerCase()
+                return result.toLowerCase();
             }
 
-            const playerSelection = 'rock'
-            const computerSelection = computerPlay()
-            console.log(playRound(playerSelection, computerSelection))
+            
+            function getPlayerSelection(){
+                let selection = window.prompt('type rock, paper, or scissors: ');
+                return selection;
+            }
+            function game(){
+                let results = [];
+                for(let i=0; i < 5; i++){
+                    const playerSelection = getPlayerSelection();
+                    const computerSelection = computerPlay();
+                    let roundResult = playRound(playerSelection, computerSelection);
+                    results.push('game: ' + (i+1) + ': ' + roundResult + '\n');
+                    console.log(results[i]);
+                }
+                window.alert("all done. Results:\n" + results);
+            }
+            game();
+            // console.log(playRound(playerSelection, computerSelection))
             
         </script>        
     </body>
